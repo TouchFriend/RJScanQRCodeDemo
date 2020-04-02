@@ -22,14 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (CGRect)getInterestRect;
 
-
 - (void)startScanning;
 
 - (void)stopScanning;
 
-- (void)showTorchSwitch;
+- (void)showTorchSwitch:(BOOL)animate;
 
-- (void)hidenTorchSwitch;
+- (void)hidenTorchSwitch:(BOOL)animate;
 
 - (void)showIndicatorView;
 

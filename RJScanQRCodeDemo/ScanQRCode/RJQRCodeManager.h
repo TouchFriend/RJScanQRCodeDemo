@@ -28,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stopScanning;
 
 //打开/关闭手电筒
-#warning 手电筒的切换逻辑有点问题，参考微信。在黑暗环境下关闭手电筒，就没有打开手电筒的按钮
 - (void)turnOnTorch:(BOOL)on;
 
 /**

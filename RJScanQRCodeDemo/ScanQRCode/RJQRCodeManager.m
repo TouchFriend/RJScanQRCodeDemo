@@ -38,8 +38,6 @@ static NSString *RJInputCorrectionLevelH = @"H";//!< H: 30%
 @property (nonatomic, assign) BOOL autoStop;
 /********* 亮度监测block *********/
 @property (nonatomic, copy) LightObserverBlock lightObserverBlock;
-/********* 亮度监测block是否已经调用 *********/
-@property (nonatomic, assign) BOOL LightObserverBlockHasCalled;
 
 
 @end
@@ -190,24 +188,13 @@ static NSString *RJInputCorrectionLevelH = @"H";//!< H: 30%
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     BOOL torchOn = device.torchMode == AVCaptureTorchModeOn;
-    BOOL dimmed = brightness < 1.0;
-    static BOOL lastDimmed = NO;
+    BOOL dimmed = brightness < 0.7;
     
-    // 控制透传逻辑：第一次监测到光线或者光线明暗变化（dimmed变化）时透传
     if (self.lightObserverBlock)
     {
-        if (!self.LightObserverBlockHasCalled)
-        {
-            self.lightObserverBlock(dimmed, torchOn);
-            self.LightObserverBlockHasCalled = YES;
-            lastDimmed = dimmed;
-        }
-        else if (dimmed != lastDimmed)
-        {
-            self.lightObserverBlock(dimmed, torchOn);
-            lastDimmed = dimmed;
-        }
+        self.lightObserverBlock(dimmed, torchOn);
     }
+    
     
 }
 
@@ -292,7 +279,6 @@ static NSString *RJInputCorrectionLevelH = @"H";//!< H: 30%
 - (void)turnOnTorch:(BOOL)on
 {
     [self torchStatusSwitch:on];
-    self.LightObserverBlockHasCalled = on;
 }
 
 - (void)presentPhotoLibraryWithRootController:(UIViewController *)rootController resultBlock:(ScanningResultBlock)resultBlock
@@ -551,12 +537,10 @@ static NSString *RJInputCorrectionLevelH = @"H";//!< H: 30%
                [weakSelf.previewView stopScanning];
            }
            // 显示手电筒开关
-           if ([weakSelf.previewView respondsToSelector:@selector(showTorchSwitch)])
+           if ([weakSelf.previewView respondsToSelector:@selector(showTorchSwitch:)])
            {
-               [weakSelf.previewView showTorchSwitch];
+               [weakSelf.previewView showTorchSwitch:NO];
            }
-
-
         }
         else// 变为亮光并且手电筒处于关闭状态
         {
@@ -566,9 +550,9 @@ static NSString *RJInputCorrectionLevelH = @"H";//!< H: 30%
                 [weakSelf.previewView startScanning];
             }
             // 隐藏手电筒开关
-            if ([weakSelf.previewView respondsToSelector:@selector(hidenTorchSwitch)])
+            if ([weakSelf.previewView respondsToSelector:@selector(hidenTorchSwitch:)])
             {
-                [weakSelf.previewView hidenTorchSwitch];
+                [weakSelf.previewView hidenTorchSwitch:NO];
             }
         }
     }];

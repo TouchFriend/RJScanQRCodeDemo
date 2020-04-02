@@ -64,9 +64,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)stopScanning;
 
-- (void)showTorchSwitch;
+/// 显示闪光灯开关
+/// @param animate 是否动画
+- (void)showTorchSwitch:(BOOL)animate;
 
-- (void)hidenTorchSwitch;
+/// 隐藏闪光灯开关
+/// @param animate 是否动画
+- (void)hidenTorchSwitch:(BOOL)animate;
 
 - (void)showIndicatorView;
 

@@ -246,23 +246,33 @@ static NSString *const RJScanningLineAnimationKey = @"ScanningLineAnimationKey";
     [self.scanningLineLayer removeAnimationForKey:RJScanningLineAnimationKey];
 }
 
-- (void)showTorchSwitch
+- (void)showTorchSwitch:(BOOL)animate
 {
     self.torchSwitchBtn.hidden = NO;
-    self.torchSwitchBtn.alpha = 0.0;
-    [UIView animateWithDuration:0.25 animations:^{
+    if (animate) {
+        self.torchSwitchBtn.alpha = 0.0;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.torchSwitchBtn.alpha = 1.0;
+        }];
+    } else {
         self.torchSwitchBtn.alpha = 1.0;
-    }];
+    }
 }
 
-- (void)hidenTorchSwitch
+- (void)hidenTorchSwitch:(BOOL)animate
 {
     self.torchSwitchBtn.alpha = 1.0;
-    [UIView animateWithDuration:0.25 animations:^{
+    if (animate) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.torchSwitchBtn.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            self.torchSwitchBtn.hidden = YES;
+        }];
+    } else {
         self.torchSwitchBtn.alpha = 0.0;
-    } completion:^(BOOL finished) {
         self.torchSwitchBtn.hidden = YES;
-    }];
+    }
+    
 }
 
 - (void)showIndicatorView
