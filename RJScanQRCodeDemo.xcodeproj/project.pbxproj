@@ -23,6 +23,7 @@
 		BF81B78C229545C30055E4F1 /* RJGeneratorQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF81B78B229545C30055E4F1 /* RJGeneratorQRCodeViewController.xib */; };
 		BFE2626D2296307B005CFD9A /* RJScanQRCodePreviewViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2626C2296307B005CFD9A /* RJScanQRCodePreviewViewConfiguration.m */; };
 		BFE2627322964BB6005CFD9A /* NSBundle+RJScanQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2627222964BB6005CFD9A /* NSBundle+RJScanQRCode.m */; };
+		BFF032B4256F3F4C00391DEA /* RJScanQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BFF032B3256F3F4C00391DEA /* RJScanQRCode.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		BFE2627022964288005CFD9A /* RJScanQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RJScanQRCode.h; sourceTree = "<group>"; };
 		BFE2627122964BB6005CFD9A /* NSBundle+RJScanQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+RJScanQRCode.h"; sourceTree = "<group>"; };
 		BFE2627222964BB6005CFD9A /* NSBundle+RJScanQRCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+RJScanQRCode.m"; sourceTree = "<group>"; };
+		BFF032B3256F3F4C00391DEA /* RJScanQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RJScanQRCode.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		BF69B65322929CB3003FC438 /* ScanQRCode */ = {
 			isa = PBXGroup;
 			children = (
+				BFF032B3256F3F4C00391DEA /* RJScanQRCode.bundle */,
 				BF69B64D2292970F003FC438 /* RJScanQRCodeViewController.h */,
 				BF69B64E2292970F003FC438 /* RJScanQRCodeViewController.m */,
 				BF69B65422929D03003FC438 /* RJQRCodeManager.h */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF81B78C229545C30055E4F1 /* RJGeneratorQRCodeViewController.xib in Resources */,
+				BFF032B4256F3F4C00391DEA /* RJScanQRCode.bundle in Resources */,
 				BF69B644229296E5003FC438 /* LaunchScreen.storyboard in Resources */,
 				BF69B641229296E5003FC438 /* Assets.xcassets in Resources */,
 				BF69B63F229296E4003FC438 /* Main.storyboard in Resources */,
